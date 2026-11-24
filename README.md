@@ -1,31 +1,28 @@
 # MDRRMO Incident Reporting API (prototype)
 
-This PHP REST API connects the existing Hatchable constituents website to a Render PostgreSQL database with PostGIS. It is a learning prototype only. Do not submit real emergency reports or real personal information; it is not an operational rescue or dispatch service.
+This PHP REST API connects the existing Hatchable constituents website to a Render PostgreSQL database with PostGIS. It is a learning prototype only. Do not submit real emergency reports or real personal information; this is not an operational rescue or dispatch service.
 
-## File structure
+## File structure from the Step 1 guide
 
 ```text
 mdrrmo-api/
 ├── public/
-│   ├── api/incidents/
-│   │   ├── create.php
-│   │   ├── list.php
-│   │   └── view.php
-│   └── index.php
+│   └── api/
+│       └── incidents/
+│           ├── create.php
+│           ├── list.php
+│           └── view.php
 ├── src/
 │   ├── database.php
-│   ├── db_connection.php
-│   ├── http.php
-│   ├── incident_validation.php
-│   └── migrate.php
-├── migrations/001_create_incident_reports.sql
-├── test-db.php
+│   └── db_connection.php
 ├── .dockerignore
 ├── .gitignore
-├── Dockerfile
-├── docker-entrypoint.sh
-└── README.md
+├── README.md
+├── test-db.php
+└── Dockerfile
 ```
+
+These are the core paths shown in the guide. The deployed implementation keeps additional runtime support files alongside them: `public/index.php`, `src/http.php`, `src/incident_validation.php`, `src/migrate.php`, `migrations/001_create_incident_reports.sql`, and `docker-entrypoint.sh`. They provide the health page, HTTP/CORS handling, validation, and the Render database migration/startup steps.
 
 ## Endpoints
 
