@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/../../../src/http.php';
 require_once __DIR__ . '/../../../src/database.php';
-require_once __DIR__ . '/../../../src/incident_validation.php';
 
 configure_http(['POST']);
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -12,7 +10,6 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
 
 $payload = read_json_body();
 $idempotencyKey = request_idempotency_key();
-
 $reporterName = required_string($payload, 'reporter_name', 120);
 $contactNumber = required_string($payload, 'contact_number', 40);
 $contactDigits = preg_replace('/\D/', '', $contactNumber) ?? '';
